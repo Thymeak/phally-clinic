@@ -46,13 +46,17 @@
                             <td><?php echo $value->department ?></td> 
                             <td><?php echo $value->phone ?></td> 
                             <td>   
+                                <a class="tooltips" href="<?php echo base_url(); ?>admin/editCustomer/<?php echo $value->custID ?>">    
+                                    <span>Edit</span>                                   
+                                    <i class="lnr lnr-pencil"></i>
+                                </a>
                                 <a class="tooltips" onclick="btnDelete('<?php echo $value->fullname ?>', '<?php echo $value->custID ?>')" style="color: red !important;">    
                                     <span>Delete</span>                                   
                                     <i class="lnr lnr-trash"></i>
                                 </a>
                             </td>
                         </tr> 
-<?php } ?>
+                    <?php } ?>
                 </tbody> 
             </table>
 
@@ -86,7 +90,7 @@
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-<?php echo form_open('admin/deleteCustomer') ?>
+            <?php echo form_open('admin/deleteCustomer') ?>
             <div class="modal-header">
                 <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -101,7 +105,7 @@
                 <button type="submit" class="btn btn-primary">Delete</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-top: 0px !important;">Close</button>                
             </div>            
-<?php echo form_close() ?>
+            <?php echo form_close() ?>
         </div>
     </div>
 </div>

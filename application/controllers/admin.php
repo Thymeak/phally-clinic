@@ -135,6 +135,7 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('txtgender', 'Gender', 'required');
         $this->form_validation->set_rules('txtage', 'Age', 'required');
         $this->form_validation->set_rules('txtdepartment', 'Department', 'required');
+        $this->form_validation->set_rules('txtcreatedate', 'Register Date', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->addCustomer();
@@ -146,6 +147,7 @@ class Admin extends CI_Controller {
                 'khmername' => $this->input->post('txtkhmername'),
                 'husbandName' => $this->input->post('txthusbandName'),
                 'husbandAge' => $this->input->post('txthusbandAge'),
+                'nationality' => $this->input->post('txtnationality'),
                 'department' => $this->input->post('txtdepartment'),
                 'gender' => $this->input->post('txtgender'),
                 'age' => $this->input->post('txtage'),
@@ -160,7 +162,7 @@ class Admin extends CI_Controller {
                 'distinctNo' => $this->input->post('txtdistinctNo'),
                 'communNo' => $this->input->post('txtcommuneNo'),
                 'villageNo' => $this->input->post('txtvillageNo'),
-                'createDate' => date(),
+                'createDate' => $this->input->post('txtcreatedate'),
                 'isActive' => 'Y'
             );
             $this->customer_model->insert_data($data);
@@ -173,6 +175,69 @@ class Admin extends CI_Controller {
                     . '</div>';
             $this->session->set_flashdata('insert', $message);
             redirect('admin/addCustomer');
+        }
+    }
+
+    public function editCustomer($custID) {
+        $result = $this->customer_model->get_customer_by_custID($custID);
+        $data = array();
+        foreach ($result as $value) {
+            $data['value'] = $value;
+        }
+
+        $data['content'] = '/customer/edit_customer';
+        $data['current_page'] = '<a href="' . base_url() . 'admin/viewCustomer">Customer</a> / Edit Customer';
+        $this->load->view('admin', $data);
+    }
+
+    public function submitEditCustomer() {
+
+        $this->form_validation->set_rules('txtfname', 'First Name', 'required');
+        $this->form_validation->set_rules('txtlname', 'Last Name', 'required');
+        $this->form_validation->set_rules('txtgender', 'Gender', 'required');
+        $this->form_validation->set_rules('txtage', 'Age', 'required');
+        $this->form_validation->set_rules('txtdepartment', 'Department', 'required');
+        $this->form_validation->set_rules('txtcreatedate', 'Register Date', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->addCustomer();
+        } else {
+            $data = array(
+                'firstname' => $this->input->post('txtfname'),
+                'lastname' => $this->input->post('txtlname'),
+                'fullname' => $this->input->post('txtfname') . ' ' . $this->input->post('txtlname'),
+                'khmername' => $this->input->post('txtkhmername'),
+                'husbandName' => $this->input->post('txthusbandName'),
+                'husbandAge' => $this->input->post('txthusbandAge'),
+                'nationality' => $this->input->post('txtnationality'),
+                'department' => $this->input->post('txtdepartment'),
+                'gender' => $this->input->post('txtgender'),
+                'age' => $this->input->post('txtage'),
+                'ageType' => $this->input->post('txtageType'),
+                'occupation' => $this->input->post('txtoccupation'),
+                'phone' => $this->input->post('txtphone'),
+                'homePhone' => $this->input->post('txthomephone'),
+                'homeNo' => $this->input->post('txthomeNo'),
+                'streetNo' => $this->input->post('txtstreetNo'),
+                'groupNo' => $this->input->post('txtgroupNo'),
+                'provinceNo' => $this->input->post('txtprovinceNo'),
+                'distinctNo' => $this->input->post('txtdistinctNo'),
+                'communNo' => $this->input->post('txtcommuneNo'),
+                'villageNo' => $this->input->post('txtvillageNo'),
+                'createDate' => $this->input->post('txtcreatedate'),
+                'isActive' => 'Y'
+            );
+            $custID = $this->input->post('txtcustID');
+            $this->customer_model->update_data($data, $custID);
+
+            $message = '<div class = "alert alert-success" role = "alert">'
+                    . '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+                    . '<span aria-hidden="true">&times;</span>'
+                    . '</button>'
+                    . '<strong>Well Done!</strong> You successfully Update Customer "' . $data['fullname'] . '"'
+                    . '</div>';
+            $this->session->set_flashdata('message', $message);
+            redirect('admin/viewCustomer');
         }
     }
 

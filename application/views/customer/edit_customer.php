@@ -7,38 +7,41 @@
 
 
 <div class="forms-main">
-    <h2 class="inner-tittle">Add New Customer </h2>
+    <h2 class="inner-tittle">Edit Customer </h2>
 
 
     <div class="graph-form" style="margin-bottom: 10%">
         <div class="form-body"> 
 
             <!--<form>--> 
-            <?php echo form_open('./admin/submitCustomer') ?>
-            <?php echo $this->session->flashdata('insert'); ?>
+            <?php echo form_open('./admin/submitEditCustomer') ?>
+            <?php echo $this->session->flashdata('update'); ?>
+
+            <input type="hidden" id="txtcustID" name="txtcustID" value="<?php echo set_value('txtcustID', $value->custID) ?>" />
+
             <div class="col-md-6 form-group"> 
                 <label for="txtfname">First Name</label> 
                 <?php echo form_error('txtfname', '<div class="error">', '</div>'); ?>
-                <input type="text" class="form-control" id="txtfname" name="txtfname" value="<?php echo set_value('txtfname') ?>" placeholder="First Name"/>
+                <input type="text" class="form-control" id="txtfname" name="txtfname" value="<?php echo set_value('txtfname', $value->firstname) ?>" placeholder="First Name"/>
             </div> 
 
             <div class="col-md-6 form-group form-last"> 
                 <label for="txtlname">Last Name</label> 
                 <?php echo form_error('txtlname', '<div class="error">', '</div>'); ?>
-                <input type="text" class="form-control" id="txtlname" name="txtlname" value="<?php echo set_value('txtlname') ?>" placeholder="Last Name"/>
+                <input type="text" class="form-control" id="txtlname" name="txtlname" value="<?php echo set_value('txtlname', $value->lastname) ?>" placeholder="Last Name"/>
             </div> 
 
             <div class="clearfix"> </div>
 
             <div class="col-md-6 form-group"> 
                 <label for="txtkhmername">Khmer Name</label>                 
-                <input type="text" class="form-control" id="txtkhmername" name="txtkhmername" value="<?php echo set_value('txtkhmername') ?>" placeholder="Khmer Name"/>
+                <input type="text" class="form-control" id="txtkhmername" name="txtkhmername" value="<?php echo set_value('txtkhmername', $value->khmername) ?>" placeholder="Khmer Name"/>
             </div> 
 
             <div class="col-md-6 form-group form-last"> 
                 <label for="txtgender">Gender</label><br/>         
                 <?php echo form_error('txtgender', '<div class="error">', '</div>'); ?>
-                <select name="txtgender" id="txtgender" value="<?php echo set_value('txtgender') ?>">
+                <select name="txtgender" id="txtgender" value="<?php echo set_value('txtgender', $value->gender) ?>">
                     <option value="M">Male</option>
                     <option value="F">Female</option>
                 </select>
@@ -49,12 +52,12 @@
             <div class="col-md-6 form-group"> 
                 <label for="txtage">Age</label> 
                 <?php echo form_error('txtage', '<div class="error">', '</div>'); ?>
-                <input type="number" class="form-control" id="txtage" name="txtage" value="<?php echo set_value('txtage') ?>" placeholder="Age"/>
+                <input type="number" class="form-control" id="txtage" name="txtage" value="<?php echo set_value('txtage', $value->age) ?>" placeholder="Age"/>
             </div>
 
             <div class="col-md-6 form-group"> 
                 <label for="txtageType">Age Type</label><br/> 
-                <select name="txtageType" id="txtageType" value="<?php echo set_value('txtageType') ?>">
+                <select name="txtageType" id="txtageType" value="<?php echo set_value('txtageType', $value->ageType) ?>">
                     <option value="ឆ្នាំ">ឆ្នាំ</option>
                     <option value="ខែ">ខែ</option>
                 </select>
@@ -64,12 +67,12 @@
 
             <div class="col-md-6 form-group"> 
                 <label for="txtoccupation">Occupation</label> 
-                <input type="text" class="form-control" id="txtoccupation" name="txtoccupation" value="<?php echo set_value('txtoccupation') ?>" placeholder="Occupation"/>
+                <input type="text" class="form-control" id="txtoccupation" name="txtoccupation" value="<?php echo set_value('txtoccupation', $value->occupation) ?>" placeholder="Occupation"/>
             </div>
 
             <div class="col-md-6 form-group form-last"> 
                 <label for="txtnationality">Occupation</label> 
-                <input type="text" class="form-control" id="txtnationality" name="txtnationality" value="<?php echo set_value('txtnationality') ?>" placeholder="Nationality"/>
+                <input type="text" class="form-control" id="txtnationality" name="txtnationality" value="<?php echo set_value('txtnationality', $value->nationality) ?>" placeholder="Nationality"/>
             </div>            
 
             <div class="clearfix"> </div>
@@ -77,7 +80,7 @@
             <div class="col-md-6 form-group"> 
                 <label for="txtdepartment">Department</label><br/>   
                 <?php echo form_error('txtdepartment', '<div class="error">', '</div>'); ?>
-                <select name="txtdepartment" id="txtdepartment" value="<?php echo set_value('txtdepartment') ?>">
+                <select name="txtdepartment" id="txtdepartment" value="<?php echo set_value('txtdepartment', $value->department) ?>">
                     <!--<option value="All">All</option>-->
                     <option value="General">General</option>
                     <option value="Maternity">Maternity</option>
@@ -88,20 +91,20 @@
 
             <div class="col-md-6 form-group form-last"> 
                 <label for="txtphone">Phone Number</label> 
-                <input type="text" class="form-control" id="txtphone" name="txtphone" value="<?php echo set_value('txtphone') ?>" placeholder="Phone Number"/>
+                <input type="text" class="form-control" id="txtphone" name="txtphone" value="<?php echo set_value('txtphone', $value->phone) ?>" placeholder="Phone Number"/>
             </div>            
 
             <div class="clearfix"> </div>
 
             <div class="col-md-6 form-group"> 
                 <label for="txthomephone">Home Number</label> 
-                <input type="text" class="form-control" id="txthomephone" name="txthomephone" value="<?php echo set_value('txthomephone') ?>" placeholder="Home Number"/>
+                <input type="text" class="form-control" id="txthomephone" name="txthomephone" value="<?php echo set_value('txthomephone', $value->homePhone) ?>" placeholder="Home Number"/>
             </div> 
 
             <div class="col-md-6 form-group form-last"> 
                 <label for="txtcreatedate">Register Date</label> 
                 <?php echo form_error('txtcreatedate', '<div class="error">', '</div>'); ?>
-                <input type="date" class="form-control" id="txtcreatedate" name="txtcreatedate" value="<?php echo set_value('txtcreatedate') ?>" placeholder="Register Date"/>
+                <input type="date" class="form-control" id="txtcreatedate" name="txtcreatedate" value="<?php echo set_value('txtcreatedate', $value->createDate) ?>" placeholder="Register Date"/>
             </div> 
 
             <div class="clearfix"> </div>
@@ -123,43 +126,43 @@
 
                                     <div class="col-md-6 form-group"> 
                                         <label for="txthomeNo">Home No</label> 
-                                        <input type="text" class="form-control" id="txthomeNo" name="txthomeNo" value="<?php echo set_value('txthomeNo') ?>" placeholder="Home No"/>
+                                        <input type="text" class="form-control" id="txthomeNo" name="txthomeNo" value="<?php echo set_value('txthomeNo', $value->homeNo) ?>" placeholder="Home No"/>
                                     </div> 
 
                                     <div class="col-md-6 form-group form-last"> 
                                         <label for="txtstreetNo">Street No</label> 
-                                        <input type="text" class="form-control" id="txtstreetNo" name="txtstreetNo" value="<?php echo set_value('txtstreetNo') ?>" placeholder="Street No"/>
+                                        <input type="text" class="form-control" id="txtstreetNo" name="txtstreetNo" value="<?php echo set_value('txtstreetNo', $value->streetNo) ?>" placeholder="Street No"/>
                                     </div> 
 
                                     <div class="clearfix"> </div>
 
                                     <div class="col-md-6 form-group"> 
                                         <label for="txtgroupNo">Group No</label> 
-                                        <input type="text" class="form-control" id="txtgroupNo" name="txtgroupNo" value="<?php echo set_value('txtgroupNo') ?>" placeholder="Group No"/>
+                                        <input type="text" class="form-control" id="txtgroupNo" name="txtgroupNo" value="<?php echo set_value('txtgroupNo', $value->groupNo) ?>" placeholder="Group No"/>
                                     </div> 
 
                                     <div class="col-md-6 form-group form-last"> 
                                         <label for="txtvillageNo">Village No</label> 
-                                        <input type="text" class="form-control" id="txtvillageNo" name="txtvillageNo" value="<?php echo set_value('txtvillageNo') ?>" placeholder="Village No"/>
+                                        <input type="text" class="form-control" id="txtvillageNo" name="txtvillageNo" value="<?php echo set_value('txtvillageNo', $value->villageNo) ?>" placeholder="Village No"/>
                                     </div> 
 
                                     <div class="clearfix"> </div>
 
                                     <div class="col-md-6 form-group"> 
                                         <label for="txtcommuneNo">Commune No</label> 
-                                        <input type="text" class="form-control" id="txtcommuneNo" name="txtcommuneNo" value="<?php echo set_value('txtcommuneNo') ?>" placeholder="Commune No"/>
+                                        <input type="text" class="form-control" id="txtcommuneNo" name="txtcommuneNo" value="<?php echo set_value('txtcommuneNo', $value->communNo) ?>" placeholder="Commune No"/>
                                     </div>                                     
 
                                     <div class="col-md-6 form-group form-last"> 
                                         <label for="txtdistinctNo">Distinct No</label> 
-                                        <input type="text" class="form-control" id="txtdistinctNo" name="txtdistinctNo" value="<?php echo set_value('txtdistinctNo') ?>" placeholder="Distinct No"/>
+                                        <input type="text" class="form-control" id="txtdistinctNo" name="txtdistinctNo" value="<?php echo set_value('txtdistinctNo', $value->distinctNo) ?>" placeholder="Distinct No"/>
                                     </div> 
 
                                     <div class="clearfix"> </div>
 
                                     <div class="col-md-6 form-group"> 
                                         <label for="txtprovinceNo">Province No</label> 
-                                        <input type="text" class="form-control" id="txtprovinceNo" name="txtprovinceNo" value="<?php echo set_value('txtprovinceNo') ?>" placeholder="Province No"/>
+                                        <input type="text" class="form-control" id="txtprovinceNo" name="txtprovinceNo" value="<?php echo set_value('txtprovinceNo', $value->provinceNo) ?>" placeholder="Province No"/>
                                     </div> 
 
                                 </section>
@@ -168,12 +171,12 @@
 
                                     <div class="col-md-6 form-group"> 
                                         <label for="txthusbandName">Husband Name</label> 
-                                        <input type="text" class="form-control" id="txthusbandName" name="txthusbandName" value="<?php echo set_value('txthusbandName') ?>" placeholder="Husband Name"/>
+                                        <input type="text" class="form-control" id="txthusbandName" name="txthusbandName" value="<?php echo set_value('txthusbandName', $value->husbandName) ?>" placeholder="Husband Name"/>
                                     </div> 
 
                                     <div class="col-md-6 form-group form-last"> 
                                         <label for="txthusbandAge">Age</label> 
-                                        <input type="number" class="form-control" id="txthusbandAge" name="txthusbandAge" value="<?php echo set_value('txthusbandAge') ?>" placeholder="Husband Age"/>
+                                        <input type="number" class="form-control" id="txthusbandAge" name="txthusbandAge" value="<?php echo set_value('txthusbandAge', $value->husbandAge) ?>" placeholder="Husband Age"/>
                                     </div> 
 
                                 </section>
@@ -188,7 +191,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-default">Add</button> 
+            <button type="submit" class="btn btn-default">Update</button> 
             <!--</form>--> 
             <?php echo form_close() ?>
         </div>

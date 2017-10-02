@@ -22,8 +22,22 @@ class Customer_model extends CI_Model {
 //        }
     }
 
+    public function get_customer_by_custID($custID) {
+        $this->db->select('*');
+        $this->db->from('customers');
+        $this->db->where('custID', $custID);
+        $this->db->where('isActive', 'Y');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function insert_data($data) {
         $this->db->insert('customers', $data);
+    }
+
+    public function update_data($data,$custID) {
+        $this->db->where('custID',$custID);
+        $this->db->update('customers', $data);
     }
 
     public function delete_data($custID) {

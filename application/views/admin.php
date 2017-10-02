@@ -321,6 +321,11 @@
                 <ul id="menu" >
                     <li><a href="<?php echo base_url() ?>admin/dashboard"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
                     <li><a href="<?php echo base_url() ?>admin/viewCustomer"><i class="fa fa-users"></i> <span>Customer</span></a></li>
+                    <li id="menu-academico" ><a href="#"><i class="fa fa-file-text-o"></i> <span>General</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                        <ul id="menu-academico-sub" >
+                            <li id="menu-academico-avaliacoes" ><a href="forms.html">Forms</a></li>                            
+                        </ul>
+                    </li>
                     <li id="menu-academico" ><a href="#"><i class="fa fa-cogs"></i> <span> Administrator</span> <span class="fa fa-angle-right" style="float: right"></span></a>
                         <ul id="menu-academico-sub" >
                             <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url() ?>admin/employee"> Employee</a></li>
@@ -328,15 +333,7 @@
                                                         <li id="menu-academico-avaliacoes" ><a href="calender.html">Calendar</a></li>-->
 
                         </ul>
-                    </li>
-                    <li id="menu-academico" ><a href="#"><i class="fa fa-file-text-o"></i> <span>Ui Elements</span> <span class="fa fa-angle-right" style="float: right"></span></a>
-                        <ul id="menu-academico-sub" >
-                            <li id="menu-academico-avaliacoes" ><a href="forms.html">Forms</a></li>
-                            <li id="menu-academico-boletim" ><a href="validation.html">Validation Forms</a></li>
-                            <li id="menu-academico-boletim" ><a href="table.html">Tables</a></li>
-                            <li id="menu-academico-boletim" ><a href="buttons.html">Buttons</a></li>
-                        </ul>
-                    </li>
+                    </li>                    
                     <li><a href="typography.html"><i class="lnr lnr-pencil"></i> <span>Typography</span></a></li>
                     <li id="menu-academico" ><a href="#"><i class="lnr lnr-book"></i> <span>Pages</span> <span class="fa fa-angle-right" style="float: right"></span></a>
                         <ul id="menu-academico-sub" >
