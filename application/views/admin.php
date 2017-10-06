@@ -320,10 +320,16 @@
             <div class="menu">
                 <ul id="menu" >
                     <li><a href="<?php echo base_url() ?>admin/dashboard"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
-                    <li><a href="<?php echo base_url() ?>admin/viewCustomer"><i class="fa fa-users"></i> <span>Customer</span></a></li>
-                    <li id="menu-academico" ><a href="#"><i class="fa fa-file-text-o"></i> <span>General</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                    <li><a href="<?php echo base_url() ?>admin/viewCustomer"><i class="fa fa-users"></i> <span>ឯកសារអ្នកជំងឺ</span></a></li>
+                    <li id="menu-academico" ><a href="#"><i class="fa fa-file-text-o"></i> <span>ផ្នែកជំងឺទូទៅ</span> <span class="fa fa-angle-right" style="float: right"></span></a>
                         <ul id="menu-academico-sub" >
                             <li id="menu-academico-avaliacoes" ><a href="forms.html">Forms</a></li>                            
+                        </ul>
+                    </li>
+                    <li id="menu-academico" ><a href="#"><i class="fa fa-file-text-o"></i> <span>ផ្នែកសម្ភព និង រោគស្រ្តី</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                        <ul id="menu-academico-sub" >
+                            <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url() ?>admin/viewLetterIn">លិខិតចូលពេទ្យ</a></li>     
+                            <li id="menu-academico-avaliacoes" ><a href="forms.html">លិខិតចេញពីពេទ្យ</a></li>
                         </ul>
                     </li>
                     <li id="menu-academico" ><a href="#"><i class="fa fa-cogs"></i> <span> Administrator</span> <span class="fa fa-angle-right" style="float: right"></span></a>

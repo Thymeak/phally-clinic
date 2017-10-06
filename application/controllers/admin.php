@@ -255,6 +255,43 @@ class Admin extends CI_Controller {
     }
 
     //end controller customer
+    //
+    //
+    //
+    //start controller Maternity Letter In
+
+    public function viewLetterIn() {
+        $data = array();
+        $data['content'] = '/maternity/viewcustomer';
+        $data['current_page'] = 'ផ្នែកសម្ភព⁣ និងរោគស្ត្រី / លិខិតចូលពេទ្យ';
+        $data['page_title'] = 'លិខិតចូលពេទ្យ';
+        $data['create_action'] = 'admin/createLetterIn/';
+        $data['listCustomer'] = $this->customer_model->get_all_customers();
+        $this->load->view('admin', $data);
+    }
+
+    public function createLetterIn($custID) {
+        $result = $this->customer_model->get_customer_by_custID($custID);
+
+        $data = array();
+        foreach ($result as $value) {
+            $data['value'] = $value;
+            
+            if($value->fullname == ''){
+                $data['custName'] = $value->khmername;
+            }else{
+                $data['custName'] = $value->fullname;
+            }
+            
+        }
+        $data['content'] = '/maternity/letterin/add_letterin';
+        $data['current_page'] = '<a href="' . base_url() . 'admin/viewLetterIn">ផ្នែកសម្ភព⁣ និងរោគស្ត្រី</a> / បង្កើត លិខិតចូលពេទ្យ';
+        $this->load->view('admin', $data);
+    }
+
+    //end controller Maternity Letter In
+
+
 
 
     public function logout() {

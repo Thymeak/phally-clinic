@@ -69,7 +69,7 @@
 
             <div class="col-md-6 form-group form-last"> 
                 <label for="txtnationality">Occupation</label> 
-                <input type="text" class="form-control" id="txtnationality" name="txtnationality" value="<?php echo set_value('txtnationality') ?>" placeholder="Nationality"/>
+                <input type="text" class="form-control" id="txtnationality" value="ខ្មែរ" name="txtnationality" value="<?php echo set_value('txtnationality') ?>" placeholder="Nationality"/>
             </div>            
 
             <div class="clearfix"> </div>
@@ -78,11 +78,12 @@
                 <label for="txtdepartment">Department</label><br/>   
                 <?php echo form_error('txtdepartment', '<div class="error">', '</div>'); ?>
                 <select name="txtdepartment" id="txtdepartment" value="<?php echo set_value('txtdepartment') ?>">
-                    <!--<option value="All">All</option>-->
+                    <option value="All">All</option>
                     <option value="General">General</option>
                     <option value="Maternity">Maternity</option>
                     <option value="Surgery">Surgery</option>         
                     <option value="Emergency">Emergency</option> 
+                    <option value="Labo">Labo</option> 
                 </select>
             </div>
 
