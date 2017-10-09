@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 06, 2017 at 06:14 PM
+-- Generation Time: Oct 09, 2017 at 03:03 PM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.0.18
 
@@ -118,8 +118,17 @@ CREATE TABLE `maternity_transactions` (
   `create_date` date NOT NULL,
   `modify_by` int(11) DEFAULT NULL,
   `modify_date` date DEFAULT NULL,
-  `isActive` int(11) NOT NULL
+  `tran_type` varchar(150) NOT NULL,
+  `isActive` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `maternity_transactions`
+--
+
+INSERT INTO `maternity_transactions` (`id`, `doctor`, `custID`, `custName`, `custGender`, `custNationality`, `custFather`, `custMother`, `custProvince`, `custDistinct`, `custCommune`, `custVillage`, `custOccupation`, `custUnit`, `custCondition`, `department`, `date_in`, `custPhone`, `create_by`, `create_date`, `modify_by`, `modify_date`, `tran_type`, `isActive`) VALUES
+(1, 'សុខ', 1, 'Boy Sothymeak', 'M', 'Khmer', 'សោ', 'សា', 'ភ្នំពេញ', 'បឹងកក់២', 'ទួលគោគ', 'ទួលគោគ', 'Worker', 'Amret MFI', 'ABC', 'General', '07-10-2017 10:14PM', '085 765 062', 1, '2017-10-07', NULL, NULL, 'LetterIn', 'Y'),
+(2, 'Doctor', 1, 'Boy Sothymeak', 'M', 'Khmer', 'ABC', 'ABC', 'ភ្នំពេញ', 'បឹងកក់២', 'ទួលគោគ', 'ទួលគោគ', 'Worker', 'Amret MFI', 'Sick', 'General', '07-10-2017 10:14PM', '085 765 062', 1, '2017-10-09', NULL, NULL, 'LetterIn', 'Y');
 
 --
 -- Indexes for dumped tables
@@ -161,7 +170,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `maternity_transactions`
 --
 ALTER TABLE `maternity_transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

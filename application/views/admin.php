@@ -309,7 +309,7 @@
             <div class="down">	
                 <a href="index.html"><img src="<?php echo base_url() ?>public/images/admin.jpg"></a>
                 <a href="index.html"><span class=" name-caret"><?php echo $this->session->userdata('sess_userlogin')->lastname . ' ' . $this->session->userdata('sess_userlogin')->firstname ?></span></a>
-                <p>Department <?php echo $this->session->userdata('sess_userlogin')->department ?></p>
+                <p>Department <?php echo $this->session->userdata('sess_userlogin')->department . date('Y-m-d') ?></p>
                 <ul>
                     <li><a class="tooltips" href="index.html"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
                     <li><a class="tooltips" href="index.html"><span>Settings</span><i class="lnr lnr-cog"></i></a></li>

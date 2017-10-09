@@ -9,6 +9,7 @@ class Admin extends CI_Controller {
         // Your own constructor code     
         $this->load->model('employee_model');
         $this->load->model('customer_model');
+        $this->load->model('letterin_model');
     }
 
     /**
@@ -276,17 +277,60 @@ class Admin extends CI_Controller {
         $data = array();
         foreach ($result as $value) {
             $data['value'] = $value;
-            
-            if($value->fullname == ''){
+
+            if ($value->fullname == '') {
                 $data['custName'] = $value->khmername;
-            }else{
+            } else {
                 $data['custName'] = $value->fullname;
             }
-            
         }
+        $data['custID'] = $custID;
         $data['content'] = '/maternity/letterin/add_letterin';
         $data['current_page'] = '<a href="' . base_url() . 'admin/viewLetterIn">ផ្នែកសម្ភព⁣ និងរោគស្ត្រី</a> / បង្កើត លិខិតចូលពេទ្យ';
         $this->load->view('admin', $data);
+    }
+
+    public function submitLetterIn() {
+
+        $this->form_validation->set_rules('txtdoctor', 'Doctor Name', 'required');
+        $this->form_validation->set_rules('txtcustFather', 'Father Name', 'required');
+        $this->form_validation->set_rules('txtcustMother', 'Mother Name', 'required');
+//        $this->form_validation->set_rules('txtunit', 'Unit', 'required');
+        $this->form_validation->set_rules('txtcustCondition', 'Customer Condition', 'required');
+        $this->form_validation->set_rules('txtdatein', 'Date In', 'required');
+        $this->form_validation->set_rules('txtcustPhone', 'Phone Number', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->createLetterIn($this->input->post('txtcustID'));
+        } else {
+            $data = array(
+                'doctor' => $this->input->post('txtdoctor'),
+                'custID' => $this->input->post('txtcustID'),
+                'custName' => $this->input->post('txtcustName'),
+                'custGender' => $this->input->post('txtgender'),
+                'custNationality' => $this->input->post('txtcustNationality'),
+                'custFather' => $this->input->post('txtcustFather'),
+                'custMother' => $this->input->post('txtcustMother'),
+                'custProvince' => $this->input->post('txtprovince'),
+                'custDistinct' => $this->input->post('txtdistinct'),
+                'custCommune' => $this->input->post('txtcommune'),
+                'custVillage' => $this->input->post('txtvillage'),
+                'custOccupation' => $this->input->post('txtoccupation'),
+                'custUnit' => $this->input->post('txtunit'),
+                'custCondition' => $this->input->post('txtcustCondition'),
+                'department' => $this->input->post('txtdepartment'),
+                'date_in' => $this->input->post('txtdatein'),
+                'custPhone' => $this->input->post('txtcustPhone'),
+                'create_by' => $this->session->userdata('sess_userlogin')->empID,
+                'create_date' => date('Y-m-d'),
+                'tran_type' => 'LetterIn',
+                'isActive' => 'Y'
+            );
+            $this->letterin_model->insert_data($data);
+
+
+
+            redirect('admin/viewLetterIn');
+        }
     }
 
     //end controller Maternity Letter In

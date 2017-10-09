@@ -14,8 +14,8 @@
         <div class="form-body"> 
 
             <!--<form>--> 
-            <?php echo form_open('./admin/submitCustomer') ?>
-            <?php echo $this->session->flashdata('insert'); ?>
+            <?php echo form_open('./admin/submitLetterIn') ?>
+            <input type="hidden" name="txtcustID" id="txtcustID" value="<?php echo set_value('txtcustID', $custID) ?>"  />
             <div class="col-md-6 form-group"> 
                 <label for="txtdoctor">គ្រូពេទ្យព្យាបាល</label> 
                 <?php echo form_error('txtdoctor', '<div class="error">', '</div>'); ?>
@@ -25,7 +25,7 @@
             <div class="col-md-6 form-group form-last"> 
                 <label for="txtcustName">អ្នកជម្ងឺឈ្មោះ</label>    
                 <?php echo form_error('txtcustName', '<div class="error">', '</div>'); ?>
-                <input type="text" class="form-control" id="txtcustName" name="txtcustName" value="<?php echo set_value('txtcustName', $custName) ?>" placeholder="អ្នកជម្ងឺឈ្មោះ"/>
+                <input type="text" readonly="true" class="form-control" id="txtcustName" name="txtcustName" value="<?php echo set_value('txtcustName', $custName) ?>" placeholder="អ្នកជម្ងឺឈ្មោះ"/>
             </div>
 
             <div class="clearfix"> </div>             
@@ -33,7 +33,7 @@
             <div class="col-md-6 form-group"> 
                 <label for="txtgender">ភេទ</label><br/>         
                 <?php echo form_error('txtgender', '<div class="error">', '</div>'); ?>
-                <select name="txtgender" id="txtgender" value="<?php echo set_value('txtgender', $value->gender) ?>">
+                <select readonly="true" class="form-control" name="txtgender" id="txtgender" value="<?php echo set_value('txtgender', $value->gender) ?>">
                     <option value="M">ប្រុស</option>
                     <option value="F">ស្រី</option>
                 </select>
@@ -42,7 +42,7 @@
             <div class="col-md-6 form-group form-last"> 
                 <label for="txtcustNationality">ជាតិ</label> 
                 <?php echo form_error('txtcustNationality', '<div class="error">', '</div>'); ?>
-                <input type="text" class="form-control" id="txtcustNationality" name="txtcustNationality" value="<?php echo set_value('txtcustNationality', $value->nationality) ?>" placeholder="ជាតិ"/>
+                <input readonly="true" type="text" class="form-control" id="txtcustNationality" name="txtcustNationality" value="<?php echo set_value('txtcustNationality', $value->nationality) ?>" placeholder="ជាតិ"/>
             </div>
 
             <div class="clearfix"> </div>           
@@ -64,13 +64,13 @@
             <div class="col-md-6 form-group">               
                 <label for="txtprovince">ខេត្ត</label> 
                 <?php echo form_error('txtprovince', '<div class="error">', '</div>'); ?>
-                <input type="text" class="form-control" id="txtprovince" name="txtprovince" value="<?php echo set_value('txtprovince', $value->provinceNo) ?>" placeholder="ខេត្ត"/>
+                <input readonly="true" type="text" class="form-control" id="txtprovince" name="txtprovince" value="<?php echo set_value('txtprovince', $value->provinceNo) ?>" placeholder="ខេត្ត"/>
             </div>
 
             <div class="col-md-6 form-group form-last"> 
                 <label for="txtdistinct">ស្រុក</label> 
                 <?php echo form_error('txtdistinct', '<div class="error">', '</div>'); ?>
-                <input type="text" class="form-control" id="txtdistinct" name="txtdistinct" value="<?php echo set_value('txtdistinct', $value->distinctNo) ?>" placeholder="ស្រុក"/>
+                <input readonly="true" type="text" class="form-control" id="txtdistinct" name="txtdistinct" value="<?php echo set_value('txtdistinct', $value->distinctNo) ?>" placeholder="ស្រុក"/>
             </div>            
 
             <div class="clearfix"> </div>
@@ -78,13 +78,13 @@
             <div class="col-md-6 form-group"> 
                 <label for="txtcommune">ឃុំ</label> 
                 <?php echo form_error('txtcommune', '<div class="error">', '</div>'); ?>
-                <input type="text" class="form-control" id="txtcommune" name="txtcommune" value="<?php echo set_value('txtcommune', $value->communNo) ?>" placeholder="ឃុំ"/>
+                <input readonly="true" type="text" class="form-control" id="txtcommune" name="txtcommune" value="<?php echo set_value('txtcommune', $value->communNo) ?>" placeholder="ឃុំ"/>
             </div> 
 
             <div class="col-md-6 form-group form-last"> 
                 <label for="txtvillage">ភូមិ</label> 
                 <?php echo form_error('txtvillage', '<div class="error">', '</div>'); ?>
-                <input type="text" class="form-control" id="txtvillage" name="txtvillage" value="<?php echo set_value('txtvillage', $value->villageNo) ?>" placeholder="ភូមិ"/>
+                <input readonly="true" type="text" class="form-control" id="txtvillage" name="txtvillage" value="<?php echo set_value('txtvillage', $value->villageNo) ?>" placeholder="ភូមិ"/>
             </div> 
 
             <div class="clearfix"> </div>
@@ -92,7 +92,7 @@
             <div class="col-md-6 form-group"> 
                 <label for="txtoccupation">មុខរបរ</label> 
                 <?php echo form_error('txtoccupation', '<div class="error">', '</div>'); ?>
-                <input type="text" class="form-control" id="txtoccupation" name="txtoccupation" value="<?php echo set_value('txtoccupation', $value->occupation) ?>" placeholder="មុខរបរ"/>
+                <input readonly="true" type="text" class="form-control" id="txtoccupation" name="txtoccupation" value="<?php echo set_value('txtoccupation', $value->occupation) ?>" placeholder="មុខរបរ"/>
             </div> 
 
             <div class="col-md-6 form-group form-last"> 

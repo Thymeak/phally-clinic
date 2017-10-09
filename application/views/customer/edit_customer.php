@@ -34,30 +34,30 @@
             <div class="clearfix"> </div>
 
             <div class="col-md-6 form-group"> 
-                <label for="txtkhmername">Khmer Name</label>                 
-                <input type="text" class="form-control" id="txtkhmername" name="txtkhmername" value="<?php echo set_value('txtkhmername', $value->khmername) ?>" placeholder="Khmer Name"/>
+                <label for="txtkhmername">ឈ្មោះខ្មែរ</label>                 
+                <input type="text" class="form-control" id="txtkhmername" name="txtkhmername" value="<?php echo set_value('txtkhmername', $value->khmername) ?>" placeholder="ឈ្មោះខ្មែរ"/>
             </div> 
 
             <div class="col-md-6 form-group form-last"> 
-                <label for="txtgender">Gender</label><br/>         
+                <label for="txtgender">ភេទ</label><br/>         
                 <?php echo form_error('txtgender', '<div class="error">', '</div>'); ?>
-                <select name="txtgender" id="txtgender" value="<?php echo set_value('txtgender', $value->gender) ?>">
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
+                <select class="form-control" name="txtgender" id="txtgender" value="<?php echo set_value('txtgender', $value->gender) ?>">
+                    <option value="M">ប្រុស</option>
+                    <option value="F">ស្រី</option>
                 </select>
             </div> 
 
             <div class="clearfix"> </div>
 
             <div class="col-md-6 form-group"> 
-                <label for="txtage">Age</label> 
+                <label for="txtage">អាយុ</label> 
                 <?php echo form_error('txtage', '<div class="error">', '</div>'); ?>
-                <input type="number" class="form-control" id="txtage" name="txtage" value="<?php echo set_value('txtage', $value->age) ?>" placeholder="Age"/>
+                <input type="number" class="form-control" id="txtage" name="txtage" value="<?php echo set_value('txtage', $value->age) ?>" placeholder="អាយុ"/>
             </div>
 
             <div class="col-md-6 form-group"> 
                 <label for="txtageType">Age Type</label><br/> 
-                <select name="txtageType" id="txtageType" value="<?php echo set_value('txtageType', $value->ageType) ?>">
+                <select class="form-control" name="txtageType" id="txtageType" value="<?php echo set_value('txtageType', $value->ageType) ?>">
                     <option value="ឆ្នាំ">ឆ្នាំ</option>
                     <option value="ខែ">ខែ</option>
                 </select>
@@ -66,21 +66,21 @@
             <div class="clearfix"> </div>
 
             <div class="col-md-6 form-group"> 
-                <label for="txtoccupation">Occupation</label> 
-                <input type="text" class="form-control" id="txtoccupation" name="txtoccupation" value="<?php echo set_value('txtoccupation', $value->occupation) ?>" placeholder="Occupation"/>
+                <label for="txtoccupation">មុខរបរ</label> 
+                <input type="text" class="form-control" id="txtoccupation" name="txtoccupation" value="<?php echo set_value('txtoccupation', $value->occupation) ?>" placeholder="មុខរបរ"/>
             </div>
 
             <div class="col-md-6 form-group form-last"> 
-                <label for="txtnationality">Occupation</label> 
-                <input type="text" class="form-control" id="txtnationality" name="txtnationality" value="<?php echo set_value('txtnationality', $value->nationality) ?>" placeholder="Nationality"/>
+                <label for="txtnationality">សញ្ជាតិ</label> 
+                <input type="text" class="form-control" id="txtnationality" name="txtnationality" value="<?php echo set_value('txtnationality', $value->nationality) ?>" placeholder="សញ្ជាតិ"/>
             </div>            
 
             <div class="clearfix"> </div>
 
             <div class="col-md-6 form-group"> 
-                <label for="txtdepartment">Department</label><br/>   
+                <label for="txtdepartment">ផ្នែក</label><br/>   
                 <?php echo form_error('txtdepartment', '<div class="error">', '</div>'); ?>
-                <select name="txtdepartment" id="txtdepartment" value="<?php echo set_value('txtdepartment', $value->department) ?>">
+                <select class="form-control" name="txtdepartment" id="txtdepartment" value="<?php echo set_value('txtdepartment', $value->department) ?>">
                     <!--<option value="All">All</option>-->
                     <option value="General">General</option>
                     <option value="Maternity">Maternity</option>
