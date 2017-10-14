@@ -6,10 +6,11 @@ class Admin extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        // Your own constructor code     
+        // Your own constructor code
         $this->load->model('employee_model');
         $this->load->model('customer_model');
         $this->load->model('letterin_model');
+        $this->load->model('test_model');
     }
 
     /**
@@ -42,8 +43,8 @@ class Admin extends CI_Controller {
     }
 
     //end controller dashboard
-    //      
-    //      
+    //
+    //
     //start controller employee
     public function employee() {
         $data = array();
@@ -334,7 +335,83 @@ class Admin extends CI_Controller {
     }
 
     //end controller Maternity Letter In
+    //
+    //
+    //
+    //start controller Maternity Letter Out
 
+    public function viewMaternityLetterOut() {
+        $data = array();
+        $data['content'] = '/maternity/viewcustomer';
+        $data['current_page'] = 'ផ្នែកសម្ភព⁣ និងរោគស្ត្រី / លិខិតចេញពីពេទ្យ';
+        $data['page_title'] = 'លិខិតចេញពីពេទ្យ';
+        $data['create_action'] = 'admin/create_maternity_letter_out/';
+        $data['listCustomer'] = $this->customer_model->get_all_customers();
+        $this->load->view('admin', $data);
+    }
+
+    public function create_maternity_letter_out($custID){
+      $result = $this->customer_model->get_customer_by_custID($custID);
+
+      $data = array();
+      foreach ($result as $value) {
+          $data['value'] = $value;
+
+          if ($value->fullname == '') {
+              $data['custName'] = $value->khmername;
+          } else {
+              $data['custName'] = $value->fullname;
+          }
+      }
+      $data['custID'] = $custID;
+      $data['content'] = '/maternity/letterout/add_letterout';
+      $data['current_page'] = '<a href="' . base_url() . 'admin/viewMaternityLetterOut">ផ្នែកសម្ភព⁣ និងរោគស្ត្រី</a> / បង្កើត លិខិតចេញពីពេទ្យ';
+      $this->load->view('admin', $data);
+    }
+
+    public function submit_maternity_letter_out(){
+
+      $this->form_validation->set_rules('txtcustName', 'Customer Name', 'required');
+      $this->form_validation->set_rules('txtcustHusband', 'Husband Name', 'required');
+      $this->form_validation->set_rules('txthusNationality', 'Nationality', 'required');
+
+    }
+
+    //end controller Maternity letter Out
+    //
+    //
+    //
+    //start controller test
+
+    public function viewTest(){
+      $data = array();
+      $data['content'] = 'test';
+      $data['current_page'] = "TEST";
+      $this->load->view('admin',$data);
+    }
+
+    public function addTest(){
+
+      $this->form_validation->set_rules('txtfirstname', 'First Name', 'required');
+      $this->form_validation->set_rules('txtlastname', 'Last Name', 'required');
+
+      if ($this->form_validation->run() == FALSE) {
+          $this->viewTest();
+      } else {
+        $data = array(
+          'firstname' => $this->input->post('txtfirstname'),
+          'lastname' => $this->input->post('txtlastname'),
+          'fullname' => $this->input->post('txtfirstname') . ' ' . $this->input->post('txtlastname')
+        );
+
+        $this->test_model->insert_data($data);
+        redirect('admin/viewTest');
+
+      }
+
+    }
+
+    //end control test
 
 
 

@@ -5,7 +5,7 @@
         <title>Phally Polyclinic and Maternity</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="keywords" content="Augment Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+        <meta name="keywords" content="Augment Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
               Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <!-- Bootstrap Core CSS -->
@@ -13,17 +13,17 @@
         <!-- Custom CSS -->
         <link href="<?php echo base_url() ?>public/css/style.css" rel='stylesheet' type='text/css' />
         <!-- Graph CSS -->
-        <link href="<?php echo base_url() ?>public/css/font-awesome.css" rel="stylesheet"> 
+        <link href="<?php echo base_url() ?>public/css/font-awesome.css" rel="stylesheet">
         <!-- jQuery -->
         <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
         <!-- lined-icons -->
         <link rel="stylesheet" href="<?php echo base_url() ?>public/css/icon-font.min.css" type='text/css' />
         <!-- //lined-icons -->
         <script src="<?php echo base_url() ?>public/js/jquery-1.10.2.min.js"></script>
-        <script src="<?php echo base_url() ?>public/js/amcharts.js"></script>	
-        <script src="<?php echo base_url() ?>public/js/serial.js"></script>	
-        <script src="<?php echo base_url() ?>public/js/light.js"></script>	
-        <script src="<?php echo base_url() ?>public/js/radar.js"></script>	
+        <script src="<?php echo base_url() ?>public/js/amcharts.js"></script>
+        <script src="<?php echo base_url() ?>public/js/serial.js"></script>
+        <script src="<?php echo base_url() ?>public/js/light.js"></script>
+        <script src="<?php echo base_url() ?>public/js/radar.js"></script>
         <link href="<?php echo base_url() ?>public/css/bars.css" rel='stylesheet' type='text/css' />
         <link href="<?php echo base_url() ?>public/css/fabochart.css" rel='stylesheet' type='text/css' />
         <!--clock init-->
@@ -42,7 +42,7 @@
             }
         </style>
 
-    </head> 
+    </head>
     <body>
         <div class="page-container">
             <!--/content-inner-->
@@ -141,7 +141,7 @@
                                         <ul class="dropdown-menu two first">
                                             <li>
                                                 <div class="notification_header">
-                                                    <h3>You have 3 new messages  </h3> 
+                                                    <h3>You have 3 new messages  </h3>
                                                 </div>
                                             </li>
                                             <li><a href="#">
@@ -150,7 +150,7 @@
                                                         <p>Lorem ipsum dolor sit amet</p>
                                                         <p><span>1 hour ago</span></p>
                                                     </div>
-                                                    <div class="clearfix"></div>	
+                                                    <div class="clearfix"></div>
                                                 </a></li>
                                             <li class="odd"><a href="#">
                                                     <div class="user_img"><img src="<?php echo base_url() ?>public/images/in.jpg" alt=""></div>
@@ -158,7 +158,7 @@
                                                         <p>Lorem ipsum dolor sit amet </p>
                                                         <p><span>1 hour ago</span></p>
                                                     </div>
-                                                    <div class="clearfix"></div>	
+                                                    <div class="clearfix"></div>
                                                 </a></li>
                                             <li><a href="#">
                                                     <div class="user_img"><img src="<?php echo base_url() ?>public/images/in1.jpg" alt=""></div>
@@ -166,12 +166,12 @@
                                                         <p>Lorem ipsum dolor sit amet </p>
                                                         <p><span>1 hour ago</span></p>
                                                     </div>
-                                                    <div class="clearfix"></div>	
+                                                    <div class="clearfix"></div>
                                                 </a></li>
                                             <li>
                                                 <div class="notification_bottom">
                                                     <a href="#">See all messages</a>
-                                                </div> 
+                                                </div>
                                             </li>
                                         </ul>
                                     </li>
@@ -191,7 +191,7 @@
                                                         <p>Lorem ipsum dolor sit amet</p>
                                                         <p><span>1 hour ago</span></p>
                                                     </div>
-                                                    <div class="clearfix"></div>	
+                                                    <div class="clearfix"></div>
                                                 </a></li>
                                             <li class="odd"><a href="#">
                                                     <div class="user_img"><img src="<?php echo base_url() ?>public/images/in5.jpg" alt=""></div>
@@ -199,7 +199,7 @@
                                                         <p>Lorem ipsum dolor sit amet </p>
                                                         <p><span>1 hour ago</span></p>
                                                     </div>
-                                                    <div class="clearfix"></div>	
+                                                    <div class="clearfix"></div>
                                                 </a></li>
                                             <li><a href="#">
                                                     <div class="user_img"><img src="<?php echo base_url() ?>public/images/in8.jpg" alt=""></div>
@@ -207,15 +207,15 @@
                                                         <p>Lorem ipsum dolor sit amet </p>
                                                         <p><span>1 hour ago</span></p>
                                                     </div>
-                                                    <div class="clearfix"></div>	
+                                                    <div class="clearfix"></div>
                                                 </a></li>
                                             <li>
                                                 <div class="notification_bottom">
                                                     <a href="#">See all notification</a>
-                                                </div> 
+                                                </div>
                                             </li>
                                         </ul>
-                                    </li>	
+                                    </li>
                                     <li class="dropdown note">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i> <span class="badge blue1">9</span></a>
                                         <ul class="dropdown-menu two">
@@ -227,7 +227,7 @@
                                             <li><a href="#">
                                                     <div class="task-info">
                                                         <span class="task-desc">Database update</span><span class="percentage">40%</span>
-                                                        <div class="clearfix"></div>	
+                                                        <div class="clearfix"></div>
                                                     </div>
                                                     <div class="progress progress-striped active">
                                                         <div class="bar yellow" style="width:40%;"></div>
@@ -236,7 +236,7 @@
                                             <li><a href="#">
                                                     <div class="task-info">
                                                         <span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
-                                                        <div class="clearfix"></div>	
+                                                        <div class="clearfix"></div>
                                                     </div>
 
                                                     <div class="progress progress-striped active">
@@ -246,7 +246,7 @@
                                             <li><a href="#">
                                                     <div class="task-info">
                                                         <span class="task-desc">Mobile App</span><span class="percentage">33%</span>
-                                                        <div class="clearfix"></div>	
+                                                        <div class="clearfix"></div>
                                                     </div>
                                                     <div class="progress progress-striped active">
                                                         <div class="bar red" style="width: 33%;"></div>
@@ -255,7 +255,7 @@
                                             <li><a href="#">
                                                     <div class="task-info">
                                                         <span class="task-desc">Issues fixed</span><span class="percentage">80%</span>
-                                                        <div class="clearfix"></div>	
+                                                        <div class="clearfix"></div>
                                                     </div>
                                                     <div class="progress progress-striped active">
                                                         <div class="bar  blue" style="width: 80%;"></div>
@@ -264,14 +264,14 @@
                                             <li>
                                                 <div class="notification_bottom">
                                                     <a href="#">See all pending task</a>
-                                                </div> 
+                                                </div>
                                             </li>
                                         </ul>
-                                    </li>		   							   		
-                                    <div class="clearfix"></div>	
+                                    </li>
+                                    <div class="clearfix"></div>
                                 </ul>
                             </div>
-                            <div class="clearfix"></div>	
+                            <div class="clearfix"></div>
                             <!--//profile_details-->
                         </div>
                         <!--//menu-right-->
@@ -300,13 +300,13 @@
         <!--/sidebar-menu-->
         <div class="sidebar-menu">
             <header class="logo">
-                <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="<?php echo base_url() ?>"> <span id="logo"> <h1>Tech Cambo</h1></span> 
-                <!--<img id="logo" src="" alt="Logo"/>--> 
-                </a> 
+                <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="<?php echo base_url() ?>"> <span id="logo"> <h1>Tech Cambo</h1></span>
+                <!--<img id="logo" src="" alt="Logo"/>-->
+                </a>
             </header>
             <div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
             <!--/down-->
-            <div class="down">	
+            <div class="down">
                 <a href="index.html"><img src="<?php echo base_url() ?>public/images/admin.jpg"></a>
                 <a href="index.html"><span class=" name-caret"><?php echo $this->session->userdata('sess_userlogin')->lastname . ' ' . $this->session->userdata('sess_userlogin')->firstname ?></span></a>
                 <p>Department <?php echo $this->session->userdata('sess_userlogin')->department . date('Y-m-d') ?></p>
@@ -323,13 +323,13 @@
                     <li><a href="<?php echo base_url() ?>admin/viewCustomer"><i class="fa fa-users"></i> <span>ឯកសារអ្នកជំងឺ</span></a></li>
                     <li id="menu-academico" ><a href="#"><i class="fa fa-file-text-o"></i> <span>ផ្នែកជំងឺទូទៅ</span> <span class="fa fa-angle-right" style="float: right"></span></a>
                         <ul id="menu-academico-sub" >
-                            <li id="menu-academico-avaliacoes" ><a href="forms.html">Forms</a></li>                            
+                            <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url() ?>admin/viewTest">Test</a></li>                            
                         </ul>
                     </li>
                     <li id="menu-academico" ><a href="#"><i class="fa fa-file-text-o"></i> <span>ផ្នែកសម្ភព និង រោគស្រ្តី</span> <span class="fa fa-angle-right" style="float: right"></span></a>
                         <ul id="menu-academico-sub" >
-                            <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url() ?>admin/viewLetterIn">លិខិតចូលពេទ្យ</a></li>     
-                            <li id="menu-academico-avaliacoes" ><a href="forms.html">លិខិតចេញពីពេទ្យ</a></li>
+                            <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url() ?>admin/viewLetterIn">លិខិតចូលពេទ្យ</a></li>
+                            <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url() ?>admin/viewMaternityLetterOut">លិខិតចេញពីពេទ្យ</a></li>
                         </ul>
                     </li>
                     <li id="menu-academico" ><a href="#"><i class="fa fa-cogs"></i> <span> Administrator</span> <span class="fa fa-angle-right" style="float: right"></span></a>
@@ -339,7 +339,7 @@
                                                         <li id="menu-academico-avaliacoes" ><a href="calender.html">Calendar</a></li>-->
 
                         </ul>
-                    </li>                    
+                    </li>
                     <li><a href="typography.html"><i class="lnr lnr-pencil"></i> <span>Typography</span></a></li>
                     <li id="menu-academico" ><a href="#"><i class="lnr lnr-book"></i> <span>Pages</span> <span class="fa fa-angle-right" style="float: right"></span></a>
                         <ul id="menu-academico-sub" >
@@ -385,7 +385,7 @@
                 </ul>
             </div>
         </div>
-        <div class="clearfix"></div>		
+        <div class="clearfix"></div>
     </div>
     <script>
         var toggle = true;

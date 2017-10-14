@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 09, 2017 at 03:03 PM
+-- Generation Time: Oct 14, 2017 at 10:01 AM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.0.18
 
@@ -92,10 +92,10 @@ INSERT INTO `employees` (`empID`, `firstname`, `lastname`, `gender`, `department
 -- --------------------------------------------------------
 
 --
--- Table structure for table `maternity_transactions`
+-- Table structure for table `maternity_letterin`
 --
 
-CREATE TABLE `maternity_transactions` (
+CREATE TABLE `maternity_letterin` (
   `id` int(11) NOT NULL,
   `doctor` varchar(150) NOT NULL,
   `custID` int(11) NOT NULL,
@@ -123,12 +123,83 @@ CREATE TABLE `maternity_transactions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `maternity_transactions`
+-- Dumping data for table `maternity_letterin`
 --
 
-INSERT INTO `maternity_transactions` (`id`, `doctor`, `custID`, `custName`, `custGender`, `custNationality`, `custFather`, `custMother`, `custProvince`, `custDistinct`, `custCommune`, `custVillage`, `custOccupation`, `custUnit`, `custCondition`, `department`, `date_in`, `custPhone`, `create_by`, `create_date`, `modify_by`, `modify_date`, `tran_type`, `isActive`) VALUES
+INSERT INTO `maternity_letterin` (`id`, `doctor`, `custID`, `custName`, `custGender`, `custNationality`, `custFather`, `custMother`, `custProvince`, `custDistinct`, `custCommune`, `custVillage`, `custOccupation`, `custUnit`, `custCondition`, `department`, `date_in`, `custPhone`, `create_by`, `create_date`, `modify_by`, `modify_date`, `tran_type`, `isActive`) VALUES
 (1, 'សុខ', 1, 'Boy Sothymeak', 'M', 'Khmer', 'សោ', 'សា', 'ភ្នំពេញ', 'បឹងកក់២', 'ទួលគោគ', 'ទួលគោគ', 'Worker', 'Amret MFI', 'ABC', 'General', '07-10-2017 10:14PM', '085 765 062', 1, '2017-10-07', NULL, NULL, 'LetterIn', 'Y'),
 (2, 'Doctor', 1, 'Boy Sothymeak', 'M', 'Khmer', 'ABC', 'ABC', 'ភ្នំពេញ', 'បឹងកក់២', 'ទួលគោគ', 'ទួលគោគ', 'Worker', 'Amret MFI', 'Sick', 'General', '07-10-2017 10:14PM', '085 765 062', 1, '2017-10-09', NULL, NULL, 'LetterIn', 'Y');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `maternity_letterout`
+--
+
+CREATE TABLE `maternity_letterout` (
+  `id` int(11) NOT NULL,
+  `custID` int(11) NOT NULL,
+  `custName` varchar(150) DEFAULT NULL,
+  `custAge` int(11) DEFAULT NULL,
+  `custNationality` varchar(100) DEFAULT NULL,
+  `custOccupation` varchar(150) DEFAULT NULL,
+  `custUnit` varchar(150) DEFAULT NULL,
+  `custHusband` varchar(150) DEFAULT NULL,
+  `husAge` int(11) DEFAULT NULL,
+  `husNationality` varchar(150) DEFAULT NULL,
+  `husOccupation` varchar(150) DEFAULT NULL,
+  `husUnit` varchar(150) DEFAULT NULL,
+  `villageNo` varchar(150) DEFAULT NULL,
+  `communeNo` varchar(150) DEFAULT NULL,
+  `distinctNo` varchar(150) DEFAULT NULL,
+  `provinceNo` varchar(150) DEFAULT NULL,
+  `phoneNo` varchar(150) DEFAULT NULL,
+  `dayIn` varchar(10) DEFAULT NULL,
+  `monthIn` varchar(10) DEFAULT NULL,
+  `yearIn` varchar(10) DEFAULT NULL,
+  `dayOut` varchar(10) DEFAULT NULL,
+  `monthOut` varchar(10) DEFAULT NULL,
+  `yearOut` varchar(10) DEFAULT NULL,
+  `condition_in` varchar(250) DEFAULT NULL,
+  `condition_out` varchar(250) DEFAULT NULL,
+  `dayout_1` varchar(10) DEFAULT NULL,
+  `monthout_1` varchar(10) DEFAULT NULL,
+  `yearout_1` varchar(10) DEFAULT NULL,
+  `timeout_1` varchar(50) DEFAULT NULL,
+  `condition_1` varchar(250) DEFAULT NULL,
+  `isSugery` char(1) DEFAULT NULL,
+  `cust_condition_out` varchar(250) DEFAULT NULL,
+  `type_1` varchar(20) DEFAULT NULL,
+  `type_1_1` varchar(20) DEFAULT NULL,
+  `type_2` varchar(20) DEFAULT NULL,
+  `type_2_2` varchar(20) DEFAULT NULL,
+  `type_3` varchar(20) DEFAULT NULL,
+  `type_3_3` varchar(20) DEFAULT NULL,
+  `create_date` date NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `isActive` char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_test`
+--
+
+CREATE TABLE `tbl_test` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(100) NOT NULL,
+  `fullname` varchar(150) NOT NULL COMMENT 'this field is not input. firstname + lastname'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_test`
+--
+
+INSERT INTO `tbl_test` (`id`, `firstname`, `lastname`, `fullname`) VALUES
+(1, 'Boy', 'Sothymeak', '0'),
+(2, 'asdfa', 'asdfasdfasdfas', 'asdfa asdfasdfasdfas');
 
 --
 -- Indexes for dumped tables
@@ -147,9 +218,21 @@ ALTER TABLE `employees`
   ADD PRIMARY KEY (`empID`);
 
 --
--- Indexes for table `maternity_transactions`
+-- Indexes for table `maternity_letterin`
 --
-ALTER TABLE `maternity_transactions`
+ALTER TABLE `maternity_letterin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `maternity_letterout`
+--
+ALTER TABLE `maternity_letterout`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_test`
+--
+ALTER TABLE `tbl_test`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -160,16 +243,26 @@ ALTER TABLE `maternity_transactions`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
   MODIFY `empID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT for table `maternity_transactions`
+-- AUTO_INCREMENT for table `maternity_letterin`
 --
-ALTER TABLE `maternity_transactions`
+ALTER TABLE `maternity_letterin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `maternity_letterout`
+--
+ALTER TABLE `maternity_letterout`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_test`
+--
+ALTER TABLE `tbl_test`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

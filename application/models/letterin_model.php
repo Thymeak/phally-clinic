@@ -32,18 +32,7 @@ class LetterIn_model extends CI_Model {
     }
 
     public function insert_data($data) {
-        $this->db->insert('maternity_transactions', $data);
-    }
-
-    public function update_data($data,$custID) {
-        $this->db->where('custID',$custID);
-        $this->db->update('customers', $data);
-    }
-
-    public function delete_data($custID) {
-        $this->db->where('custID', $custID);
-        $this->db->set('isActive', 'N');
-        $this->db->update('customers');
+        $this->db->insert('maternity_letterin', $data);
     }
 
 }

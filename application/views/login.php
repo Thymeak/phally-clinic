@@ -11,7 +11,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <title>Phally Polyclinic and Maternity</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="keywords" content="Augment Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+        <meta name="keywords" content="Augment Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
               Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <!-- Bootstrap Core CSS -->
@@ -19,7 +19,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!-- Custom CSS -->
         <link href="<?php echo base_url() ?>public/css/style.css" rel='stylesheet' type='text/css' />
         <!-- Graph CSS -->
-        <link href="<?php echo base_url() ?>public/css/font-awesome.css" rel="stylesheet"> 
+        <link href="<?php echo base_url() ?>public/css/font-awesome.css" rel="stylesheet">
         <!-- jQuery -->
         <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
         <!-- lined-icons -->
@@ -53,13 +53,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <div class="clearfix"></div>
                         </ul> -->
                     </div>
-                    <?php echo $this->session->flashdata('loginfail'); ?>																
+                    <?php echo $this->session->flashdata('loginfail'); ?>
                     <?php echo form_open('login') ?>
                     <!-- <form> -->
                     <?php echo form_error('txtusername', '<div class="error">', '</div>'); ?>
                     <input type="text" class="text" value="<?php echo set_value('txtusername') ?>" name="txtusername" placeholder="Username" require>
                     <?php echo form_error('txtpassword', '<div class="error">', '</div>'); ?>
-                    <input type="password" name="txtpassword" placeholder="Password" require>																		
+                    <input type="password" name="txtpassword" placeholder="Password" require>
                     <div class="submit"><input type="submit" onclick="myFunction()" value="Login" ></div>
                     <div class="clearfix"></div>
 

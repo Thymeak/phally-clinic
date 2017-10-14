@@ -52,7 +52,7 @@ class Login extends CI_Controller {
             $password = $this->input->post('txtpassword');
 
             $result = $this->login_model->get_userlogin($username, $password);
-
+            
             if ($result) {
                 $this->session->set_userdata('sess_userlogin', $result);
                 redirect('admin');
