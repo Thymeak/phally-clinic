@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 14, 2017 at 10:01 AM
+-- Generation Time: Oct 21, 2017 at 05:51 PM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.0.18
 
@@ -61,7 +61,7 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`custID`, `firstname`, `lastname`, `fullname`, `khmername`, `husbandName`, `husbandAge`, `nationality`, `department`, `gender`, `age`, `ageType`, `occupation`, `phone`, `homePhone`, `homeNo`, `streetNo`, `groupNo`, `provinceNo`, `distinctNo`, `communNo`, `villageNo`, `createDate`, `isActive`) VALUES
 (1, 'Boy', 'Sothymeak', 'Boy Sothymeak', 'បោយ⁣ សុទ្ធិមគ្គ', '', 0, 'Khmer', 'General', 'M', 23, 'ឆ្នាំ', 'Worker', '085 765 062', '010 59 02 13', '14Eo', '299', '62', 'ភ្នំពេញ', 'បឹងកក់២', 'ទួលគោគ', 'ទួលគោគ', '2017-10-02', 'Y'),
-(2, 'asdf', 'asdf', 'asdf asdf', '', '', 0, NULL, 'General', 'M', 12, 'ឆ្នាំ', '', '', '', '', '', '', '', '', '', '', '0000-00-00', 'N');
+(3, 'Sok', 'San', 'Sok San', 'សុខ⁣ សាន', 'សាន សុខ', 28, 'Cambodia', 'General', 'M', 23, 'ឆ្នាំ', 'កសិករ', '10590213', '10590213', '12', '14Eo,Str299', '62', 'Phonm Penh', 'ទួលគោគ', 'Phonm Penh', 'ទួលគោគ', '2017-10-15', 'Y');
 
 -- --------------------------------------------------------
 
@@ -180,6 +180,146 @@ CREATE TABLE `maternity_letterout` (
   `isActive` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `maternity_letterout`
+--
+
+INSERT INTO `maternity_letterout` (`id`, `custID`, `custName`, `custAge`, `custNationality`, `custOccupation`, `custUnit`, `custHusband`, `husAge`, `husNationality`, `husOccupation`, `husUnit`, `villageNo`, `communeNo`, `distinctNo`, `provinceNo`, `phoneNo`, `dayIn`, `monthIn`, `yearIn`, `dayOut`, `monthOut`, `yearOut`, `condition_in`, `condition_out`, `dayout_1`, `monthout_1`, `yearout_1`, `timeout_1`, `condition_1`, `isSugery`, `cust_condition_out`, `type_1`, `type_1_1`, `type_2`, `type_2_2`, `type_3`, `type_3_3`, `create_date`, `create_by`, `isActive`) VALUES
+(1, 3, 'Sok San', 23, 'Cambodia', 'កសិករ', '', 'សាន សុខ', 28, 'ខ្មែរ', 'កសិករ', '', 'ទួលគោគ', 'Phonm Penh', 'ទួលគោគ', 'Phonm Penh', '10590213', '11', '09', '2017', '11', '10', '2017', 'sick', 'healthy', '11', '10', '2017', '9:10 AM', 'sick', NULL, 'healthy', '2', 'ខែ', '5', 'ខែ', '2', 'ឆ្នាំ', '2017-10-15', 1, 'Y');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `maternity_letter_accept`
+--
+
+CREATE TABLE `maternity_letter_accept` (
+  `id` int(11) NOT NULL,
+  `guardian_name` varchar(200) NOT NULL,
+  `guardian_nationality` varchar(100) NOT NULL,
+  `guardian_gender` varchar(20) NOT NULL,
+  `guardian_age` int(11) NOT NULL,
+  `villageNo` varchar(150) NOT NULL,
+  `communeNo` varchar(150) NOT NULL,
+  `distinctNo` varchar(150) NOT NULL,
+  `provinceNo` varchar(150) NOT NULL,
+  `guardian_type` varchar(150) NOT NULL,
+  `custID` int(11) NOT NULL,
+  `custName` varchar(200) NOT NULL,
+  `cust_gender` varchar(20) NOT NULL,
+  `cust_age` int(11) NOT NULL,
+  `accept_reason` varchar(500) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `create_date` date NOT NULL,
+  `isActive` char(1) NOT NULL COMMENT 'store value ''Y'' mean create and ''N'' mean delete'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `maternity_letter_birth`
+--
+
+CREATE TABLE `maternity_letter_birth` (
+  `id` int(11) NOT NULL,
+  `custID` int(11) NOT NULL,
+  `custName` varchar(200) NOT NULL,
+  `custAge` int(11) NOT NULL,
+  `cust_nationality` varchar(150) NOT NULL,
+  `homeNo` varchar(20) NOT NULL,
+  `villageNo` varchar(100) NOT NULL,
+  `communeNo` varchar(100) NOT NULL,
+  `distinctNo` varchar(100) NOT NULL,
+  `provinceNo` varchar(100) NOT NULL,
+  `cust_occupation` varchar(200) NOT NULL,
+  `husband_name` varchar(200) NOT NULL,
+  `husband_age` int(11) NOT NULL,
+  `husband_nationality` varchar(100) NOT NULL,
+  `husband_occupation` varchar(100) NOT NULL,
+  `child_gender` varchar(20) NOT NULL,
+  `child_weight` varchar(20) NOT NULL,
+  `birth_time` varchar(100) NOT NULL,
+  `birth_day` varchar(10) NOT NULL,
+  `birth_month` varchar(10) NOT NULL,
+  `birth_year` varchar(10) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `create_date` date NOT NULL,
+  `isActive` char(1) NOT NULL COMMENT '''Y'' is create , ''N'' is delete'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medical_letterin`
+--
+
+CREATE TABLE `medical_letterin` (
+  `id` int(11) NOT NULL,
+  `doctor_name` varchar(200) NOT NULL,
+  `custID` int(11) NOT NULL,
+  `custName` varchar(200) NOT NULL,
+  `custGender` varchar(20) NOT NULL,
+  `custNationality` varchar(150) NOT NULL,
+  `fatherName` varchar(200) NOT NULL,
+  `motherName` varchar(200) NOT NULL,
+  `villageNo` varchar(150) NOT NULL,
+  `communeNo` varchar(150) NOT NULL,
+  `distinctNo` varchar(150) NOT NULL,
+  `provinceNo` varchar(150) NOT NULL,
+  `occupation` varchar(200) NOT NULL,
+  `unit` varchar(200) DEFAULT NULL,
+  `condition_in` varchar(500) NOT NULL,
+  `department` varchar(200) NOT NULL,
+  `time_in` varchar(100) NOT NULL,
+  `phone_number` varchar(100) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `create_date` date NOT NULL,
+  `isActive` char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `medical_letterin`
+--
+
+INSERT INTO `medical_letterin` (`id`, `doctor_name`, `custID`, `custName`, `custGender`, `custNationality`, `fatherName`, `motherName`, `villageNo`, `communeNo`, `distinctNo`, `provinceNo`, `occupation`, `unit`, `condition_in`, `department`, `time_in`, `phone_number`, `create_by`, `create_date`, `isActive`) VALUES
+(1, 'banana', 3, 'Sok San', 'M', 'Cambodia', 'ABC', 'ABC', 'ទួលគោគ', 'Phonm Penh', 'ទួលគោគ', 'Phonm Penh', 'កសិករ', '', 'ABC', 'abc', '10:00 PM', '10590213', 1, '2017-10-21', 'Y');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medical_letterout`
+--
+
+CREATE TABLE `medical_letterout` (
+  `id` int(11) NOT NULL,
+  `custID` int(11) NOT NULL,
+  `custName` varchar(200) NOT NULL,
+  `custGender` varchar(10) NOT NULL,
+  `custAge` int(11) NOT NULL,
+  `custNationality` varchar(100) NOT NULL,
+  `custOccupation` varchar(200) NOT NULL,
+  `villageNo` varchar(100) NOT NULL,
+  `communeNo` varchar(100) NOT NULL,
+  `distinctNo` varchar(100) NOT NULL,
+  `provinceNo` varchar(100) NOT NULL,
+  `date_in` date NOT NULL,
+  `department` varchar(200) NOT NULL,
+  `date_out` date NOT NULL,
+  `total_day_in` int(11) NOT NULL,
+  `condition` varchar(500) NOT NULL,
+  `doctor_consultant` varchar(500) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `create_date` date NOT NULL,
+  `isActive` char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `medical_letterout`
+--
+
+INSERT INTO `medical_letterout` (`id`, `custID`, `custName`, `custGender`, `custAge`, `custNationality`, `custOccupation`, `villageNo`, `communeNo`, `distinctNo`, `provinceNo`, `date_in`, `department`, `date_out`, `total_day_in`, `condition`, `doctor_consultant`, `create_by`, `create_date`, `isActive`) VALUES
+(1, 1, '', 'M', 23, 'Khmer', 'Worker', 'ទួលគោគ', 'ទួលគោគ', 'បឹងកក់២', 'ភ្នំពេញ', '2017-09-23', 'General', '2017-10-21', 20, 'ABC', 'ABC', 1, '2017-10-21', 'Y');
+
 -- --------------------------------------------------------
 
 --
@@ -230,6 +370,30 @@ ALTER TABLE `maternity_letterout`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `maternity_letter_accept`
+--
+ALTER TABLE `maternity_letter_accept`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `maternity_letter_birth`
+--
+ALTER TABLE `maternity_letter_birth`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `medical_letterin`
+--
+ALTER TABLE `medical_letterin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `medical_letterout`
+--
+ALTER TABLE `medical_letterout`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_test`
 --
 ALTER TABLE `tbl_test`
@@ -243,7 +407,7 @@ ALTER TABLE `tbl_test`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `employees`
 --
@@ -258,7 +422,27 @@ ALTER TABLE `maternity_letterin`
 -- AUTO_INCREMENT for table `maternity_letterout`
 --
 ALTER TABLE `maternity_letterout`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `maternity_letter_accept`
+--
+ALTER TABLE `maternity_letter_accept`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `maternity_letter_birth`
+--
+ALTER TABLE `maternity_letter_birth`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `medical_letterin`
+--
+ALTER TABLE `medical_letterin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `medical_letterout`
+--
+ALTER TABLE `medical_letterout`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_test`
 --

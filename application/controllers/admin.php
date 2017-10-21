@@ -10,6 +10,8 @@ class Admin extends CI_Controller {
         $this->load->model('employee_model');
         $this->load->model('customer_model');
         $this->load->model('letterin_model');
+        $this->load->model('letterout_model');
+        $this->load->model('medical_model');
         $this->load->model('test_model');
     }
 
@@ -374,10 +376,253 @@ class Admin extends CI_Controller {
       $this->form_validation->set_rules('txtcustName', 'Customer Name', 'required');
       $this->form_validation->set_rules('txtcustHusband', 'Husband Name', 'required');
       $this->form_validation->set_rules('txthusNationality', 'Nationality', 'required');
+      $this->form_validation->set_rules('txthusOccupation', 'Occupation', 'required');
+
+      $this->form_validation->set_rules('txtdayIn', 'Day In', 'required');
+      $this->form_validation->set_rules('txtmonthIn', 'Month In', 'required');
+      $this->form_validation->set_rules('txtyearIn', 'Year In', 'required');
+
+      $this->form_validation->set_rules('txtdayOut', 'Day Out', 'required');
+      $this->form_validation->set_rules('txtmonthOut', 'Month Out', 'required');
+      $this->form_validation->set_rules('txtyearOut', 'Year Out', 'required');
+
+      $this->form_validation->set_rules('txtcondition_in', 'Condition In', 'required');
+      $this->form_validation->set_rules('txtcondition_out', 'Condition Out', 'required');
+
+      $this->form_validation->set_rules('txtdayout_1', 'Day Out', 'required');
+      $this->form_validation->set_rules('txtmonthout_1', 'Month Out', 'required');
+      $this->form_validation->set_rules('txtyearout_1', 'Year Out', 'required');
+
+      $this->form_validation->set_rules('txttimeout_1', 'Time Out', 'required');
+      $this->form_validation->set_rules('txtcondition_1', 'Condition', 'required');
+      $this->form_validation->set_rules('txtcust_condition_out', 'Customer Condition', 'required');
+
+      $this->form_validation->set_rules('txttype_1', '', 'required');
+      $this->form_validation->set_rules('txttype_2', '', 'required');
+      $this->form_validation->set_rules('txttype_3', '', 'required');
+
+      if ($this->form_validation->run() == FALSE) {
+          $this->viewTest();
+      } else {
+
+        $data = array(
+          'custID' => $this->input->post('txtcustID'),
+          'custName' => $this->input->post('txtcustName'),
+          'custAge' => $this->input->post('txtcustAge'),
+          'custNationality' => $this->input->post('txtcustNationality'),
+          'custOccupation' => $this->input->post('txtcustOccupation'),
+          'custUnit' => $this->input->post('txtcustUnit'),
+          'custHusband' => $this->input->post('txtcustHusband'),
+          'husAge' => $this->input->post('txthusAge'),
+          'husNationality' => $this->input->post('txthusNationality'),
+          'husOccupation' => $this->input->post('txthusOccupation'),
+          'husUnit' => $this->input->post('txthusUnit'),
+          'villageNo' => $this->input->post('txtvillageNo'),
+          'communeNo' => $this->input->post('txtcommuneNo'),
+          'distinctNo' => $this->input->post('txtdistinctNo'),
+          'provinceNo' => $this->input->post('txtprovinceNo'),
+          'phoneNo' => $this->input->post('txtphoneNo'),
+          'dayIn' => $this->input->post('txtdayIn'),
+          'monthIn' => $this->input->post('txtmonthIn'),
+          'yearIn' => $this->input->post('txtyearIn'),
+          'dayOut' => $this->input->post('txtdayOut'),
+          'monthOut' => $this->input->post('txtmonthOut'),
+          'yearOut' => $this->input->post('txtyearOut'),
+          'condition_in' => $this->input->post('txtcondition_in'),
+          'condition_out' => $this->input->post('txtcondition_out'),
+          'dayout_1' => $this->input->post('txtdayout_1'),
+          'monthout_1' => $this->input->post('txtmonthout_1'),
+          'yearout_1' => $this->input->post('txtyearout_1'),
+          'timeout_1' => $this->input->post('txttimeout_1'),
+          'condition_1' => $this->input->post('txtcondition_1'),
+          'isSugery' => $this->input->post('txtisSugery'),
+          'cust_condition_out' => $this->input->post('txtcust_condition_out'),
+          'type_1' => $this->input->post('txttype_1'),
+          'type_1_1' => $this->input->post('txttype_1_1'),
+          'type_2' => $this->input->post('txttype_2'),
+          'type_2_2' => $this->input->post('txttype_2_2'),
+          'type_3' => $this->input->post('txttype_3'),
+          'type_3_3' => $this->input->post('txttype_3_3'),
+          'create_date' => date('Y-m-d'),
+          'create_by' => $this->session->userdata('sess_userlogin')->empID,
+          'isActive' => 'Y'
+        );
+
+        $this->letterout_model->insert_data($data);
+        redirect('admin/viewMaternityLetterOut');
+
+      }
+
+
 
     }
 
     //end controller Maternity letter Out
+    //
+    //
+    //
+    //start controller Medicial Letter In
+
+    public function viewMedical_LetterIn(){
+
+      $data = array();
+      $data['content'] = '/medical/viewcustomer';
+      $data['current_page'] = 'ផ្នែកសល្យសាស្រ្ត / លិខិតចូលពេទ្យ';
+      $data['page_title'] = 'លិខិតចូលពេទ្យ';
+      $data['create_action'] = 'admin/create_medical_letter_in/';
+      $data['listCustomer'] = $this->customer_model->get_all_customers();
+      $this->load->view('admin', $data);
+
+    }
+
+    public function create_medical_letter_in($custID){
+
+      $result = $this->customer_model->get_customer_by_custID($custID);
+
+      $data = array();
+      foreach ($result as $value) {
+          $data['value'] = $value;
+
+          if ($value->fullname == '') {
+              $data['custName'] = $value->khmername;
+          } else {
+              $data['custName'] = $value->fullname;
+          }
+      }
+      $data['custID'] = $custID;
+      $data['content'] = '/medical/letterin/add_letterin';
+      $data['current_page'] = '<a href="' . base_url() . 'admin/viewMedical_LetterIn">ផ្នែកសល្យសាស្រ្ត</a> / បង្កើត លិខិតចូលពេទ្យ';
+      $this->load->view('admin', $data);
+
+    }
+
+    public function submit_medical_letter_in(){
+
+      $this->form_validation->set_rules('txtdoctor', 'Doctor Name', 'required');
+      $this->form_validation->set_rules('txtcustFather', 'Father Name', 'required');
+      $this->form_validation->set_rules('txtcustMother', 'Mother Name', 'required');
+//        $this->form_validation->set_rules('txtunit', 'Unit', 'required');
+      $this->form_validation->set_rules('txtcustCondition', 'Customer Condition', 'required');
+      $this->form_validation->set_rules('txtdatein', 'Date In', 'required');
+      $this->form_validation->set_rules('txtcustPhone', 'Phone Number', 'required');
+      if ($this->form_validation->run() == FALSE) {
+          $this->create_medical_letter_in($this->input->post('txtcustID'));
+      } else {
+          $data = array(
+              'doctor_name' => $this->input->post('txtdoctor'),
+              'custID' => $this->input->post('txtcustID'),
+              'custName' => $this->input->post('txtcustName'),
+              'custGender' => $this->input->post('txtgender'),
+              'custNationality' => $this->input->post('txtcustNationality'),
+              'fatherName' => $this->input->post('txtcustFather'),
+              'motherName' => $this->input->post('txtcustMother'),
+              'villageNo' => $this->input->post('txtvillage'),
+              'communeNo' => $this->input->post('txtcommune'),
+              'distinctNo' => $this->input->post('txtdistinct'),
+              'provinceNo' => $this->input->post('txtprovince'),
+              'occupation' => $this->input->post('txtoccupation'),
+              'unit' => $this->input->post('txtunit'),
+              'condition_in' => $this->input->post('txtcustCondition'),
+              'department' => $this->input->post('txtdepartment'),
+              'time_in' => $this->input->post('txtdatein'),
+              'phone_number' => $this->input->post('txtcustPhone'),
+              'create_by' => $this->session->userdata('sess_userlogin')->empID,
+              'create_date' => date('Y-m-d'),
+              'isActive' => 'Y'
+          );
+          $this->medical_model->insert_letter_in_data($data);
+
+
+
+          redirect('admin/viewMedical_LetterIn');
+      }
+
+    }
+
+    public function viewMedical_LetterOut(){
+      $data = array();
+      $data['content'] = '/medical/viewcustomer';
+      $data['current_page'] = 'ផ្នែកសល្យសាស្រ្ត / លិខិតចេញពីពេទ្យ';
+      $data['page_title'] = 'លិខិតចេញពីពេទ្យ';
+      $data['create_action'] = 'admin/create_medical_letter_out/';
+      $data['listCustomer'] = $this->customer_model->get_all_customers();
+      $this->load->view('admin', $data);
+    }
+
+    public function create_medical_letter_out($custID){
+
+      $result = $this->customer_model->get_customer_by_custID($custID);
+
+      $data = array();
+      foreach ($result as $value) {
+          $data['value'] = $value;
+
+          if ($value->fullname == '') {
+              $data['custName'] = $value->khmername;
+          } else {
+              $data['custName'] = $value->fullname;
+          }
+      }
+      $data['custID'] = $custID;
+      $data['content'] = '/medical/letterout/add_letterout';
+      $data['current_page'] = '<a href="' . base_url() . 'admin/viewMedical_LetterOut">ផ្នែកសល្យសាស្រ្ត</a> / បង្កើត លិខិតចេញពីពេទ្យ';
+      $this->load->view('admin', $data);
+
+    }
+
+    public function sumbit_medical_letter_out(){
+
+      $this->form_validation->set_rules('txtcustName', 'Customer Name', 'required');
+      $this->form_validation->set_rules('txtgender', 'Gender', 'required');
+      $this->form_validation->set_rules('txtcustAge', 'Age', 'required');
+      $this->form_validation->set_rules('txtcustNationality', 'Nationality', 'required');
+      $this->form_validation->set_rules('txtcustOccupation', 'Occupation', 'required');
+      $this->form_validation->set_rules('txtvillage', 'Village', 'required');
+      $this->form_validation->set_rules('txtcommune', 'Commune', 'required');
+      $this->form_validation->set_rules('txtdistinct', 'Distinct', 'required');
+      $this->form_validation->set_rules('txtprovince', 'Province', 'required');
+      $this->form_validation->set_rules('txtdate_in', 'Date In', 'required');
+      $this->form_validation->set_rules('txtdepartment', 'Department', 'required');
+      $this->form_validation->set_rules('txtdate_out', 'Date Out', 'required');
+      $this->form_validation->set_rules('txttotal_day_in', 'Total Day', 'required');
+      $this->form_validation->set_rules('txtcondition', 'Condition', 'required');
+      $this->form_validation->set_rules('txtdoctor_consultant', 'Consultant', 'required');
+
+      if ($this->form_validation->run() == FALSE) {
+          $this->create_medical_letter_out($this->input->post('txtcustID'));
+      } else {
+        $data = array(
+          'custID' => $this->input->post('txtcustID'),
+          'custName' => $this->input->post('txtcustName'),
+          'custGender' => $this->input->post('txtgender'),
+          'custAge' => $this->input->post('txtcustAge'),
+          'custNationality' => $this->input->post('txtcustNationality'),
+          'custOccupation' => $this->input->post('txtcustOccupation'),
+          'villageNo' => $this->input->post('txtvillage'),
+          'communeNo' => $this->input->post('txtcommune'),
+          'distinctNo' => $this->input->post('txtdistinct'),
+          'provinceNo' => $this->input->post('txtprovince'),
+          'date_in' => $this->input->post('txtdate_in'),
+          'department' => $this->input->post('txtdepartment'),
+          'date_out' => $this->input->post('txtdate_out'),
+          'total_day_in' => $this->input->post('txttotal_day_in'),
+          'condition' => $this->input->post('txtcondition'),
+          'doctor_consultant' => $this->input->post('txtdoctor_consultant'),
+          'create_by' => $this->session->userdata('sess_userlogin')->empID,
+          'create_date' => date('Y-m-d'),
+          'isActive' => 'Y'
+        );
+
+        $this->medical_model->insert_letter_out_data($data);
+
+        redirect('admin/viewMedical_LetterOut');
+
+      }
+
+    }
+
+
+    //end controller Medicail Letter In
     //
     //
     //
