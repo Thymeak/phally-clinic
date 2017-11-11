@@ -39,6 +39,10 @@ class Medical_model extends CI_Model {
       $this->db->insert('medical_letterout', $data);
     }
 
+    public function insert_letter_accept_data($data){
+      $this->db->insert('medical_letteraccept',$data);
+    }
+
 }
 
 ?>

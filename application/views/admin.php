@@ -336,6 +336,7 @@
                         <ul id="menu-academico-sub" >
                             <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url() ?>admin/viewMedical_LetterIn">លិខិតចូលពេទ្យ</a></li>
                             <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url() ?>admin/viewMedical_LetterOut">លិខិតចេញពីពេទ្យ</a></li>
+                            <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url() ?>admin/viewMedical_LetterAccept">លិខិតយល់ព្រម</a></li>
                         </ul>
                     </li>
                     <li id="menu-academico" ><a href="#"><i class="fa fa-cogs"></i> <span> Administrator</span> <span class="fa fa-angle-right" style="float: right"></span></a>

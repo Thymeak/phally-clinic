@@ -620,9 +620,92 @@ class Admin extends CI_Controller {
       }
 
     }
-
-
     //end controller Medicail Letter In
+    //
+    //
+    //
+    //start controller Medical Letter Accpet
+
+    public function viewMedical_LetterAccept(){
+      $data = array();
+      $data['content'] = '/medical/viewcustomer';
+      $data['current_page'] = 'ផ្នែកសល្យសាស្រ្ត / លិខិតយល់ព្រម';
+      $data['page_title'] = 'លិខិតយល់ព្រម';
+      $data['create_action'] = 'admin/create_medical_letter_accept/';
+      $data['listCustomer'] = $this->customer_model->get_all_customers();
+      $this->load->view('admin', $data);
+    }
+
+    public function create_medical_letter_accept($custID){
+
+      $result = $this->customer_model->get_customer_by_custID($custID);
+
+      $data = array();
+      foreach ($result as $value) {
+          $data['value'] = $value;
+
+          if ($value->fullname == '') {
+              $data['custName'] = $value->khmername;
+          } else {
+              $data['custName'] = $value->fullname;
+          }
+      }
+      $data['custID'] = $custID;
+      $data['content'] = '/medical/letteraccept/add_letteraccept';
+      $data['current_page'] = '<a href="' . base_url() . 'admin/viewMedical_LetterAccept">ផ្នែកសល្យសាស្រ្ត</a> / បង្កើត លិខិតយល់ព្រម';
+      $this->load->view('admin', $data);
+
+    }
+
+    public function submit_medical_letter_accept(){
+
+      $this->form_validation->set_rules('txtguardian_name', 'Guardian Name', 'required');
+      $this->form_validation->set_rules('txtguardian_nationality', 'Guardian Nationality', 'required');
+      $this->form_validation->set_rules('txtguardian_gender', 'Gender', 'required');
+      $this->form_validation->set_rules('txtguardian_age', 'Age', 'required');
+      $this->form_validation->set_rules('txtvillageNo', 'Village', 'required');
+      $this->form_validation->set_rules('txtcommuneNo', 'Commune', 'required');
+      $this->form_validation->set_rules('txtdistinctNo', 'Distinct', 'required');
+      $this->form_validation->set_rules('txtprovinceNo', 'Province', 'required');
+      $this->form_validation->set_rules('txtguardian_type', 'Guardian Type', 'required');
+      $this->form_validation->set_rules('txtcustName', 'Customer Name', 'required');
+      $this->form_validation->set_rules('txtcustGender', 'Gender', 'required');
+      $this->form_validation->set_rules('txtcustAge', 'Age', 'required');
+      $this->form_validation->set_rules('txtaccept_reason', 'Accept', 'required');
+
+      if ($this->form_validation->run() == FALSE) {
+          $this->create_medical_letter_accept($this->input->post('txtcustID'));
+      } else {
+
+        $data = array(
+          'guardian_name' => $this->input->post('txtguardian_name'),
+          'guardian_nationality' => $this->input->post('txtguardian_nationality'),
+          'guardian_gender' => $this->input->post('txtguardian_gender'),
+          'guardian_age' => $this->input->post('txtguardian_age'),
+          'villageNo' => $this->input->post('txtvillageNo'),
+          'communeNo' => $this->input->post('txtcommuneNo'),
+          'distinctNo' => $this->input->post('txtdistinctNo'),
+          'provinceNo' => $this->input->post('txtprovinceNo'),
+          'guardian_type' => $this->input->post('txtguardian_type'),
+          'custID' => $this->input->post('txtcustID'),
+          'custName' => $this->input->post('txtcustName'),
+          'custGender' => $this->input->post('txtcustGender'),
+          'custAge' => $this->input->post('txtcustAge'),
+          'accept_reason' => $this->input->post('txtaccept_reason'),
+          'create_by' => $this->session->userdata('sess_userlogin')->empID,
+          'create_date' => date('Y-m-d'),
+          'isActive' => 'Y'
+        );
+
+        $this->medical_model->insert_letter_accept_data($data);
+
+        redirect('admin/viewMedical_LetterAccept');
+
+      }
+
+    }
+
+    //end controller Medical Letter Accept
     //
     //
     //
